@@ -157,7 +157,6 @@
 			return FALSE
 	return ..()
 
-
 /obj/item/clothing/suit/modular/attack_self(mob/user)
 	. = ..()
 	if(.)
