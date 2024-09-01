@@ -24,7 +24,6 @@
 	///Where do we start the leap from
 	var/start_turf
 
-
 // TODO: merge this ability into runner pounce (can't do it right now - the runner's pounce has too many unnecessary sounds/messages)
 /datum/action/ability/activable/xeno/pounce_hugger/proc/pounce_complete()
 	SIGNAL_HANDLER
@@ -49,7 +48,7 @@
 	caster.visible_message(span_danger("[caster] leaps on [living_target]!"), span_xenodanger("We leap on [living_target]!"), null, 5)
 	playsound(caster.loc, 'sound/voice/alien/larva/roar3.ogg', 25, TRUE) //TODO: I NEED ACTUAL HUGGERS SOUND DAMMED
 
-	if(ishuman(living_target) && (angle_to_dir(Get_Angle(caster.throw_source, living_target)) in reverse_nearby_direction(living_target.dir)))
+	if(ishuman(living_target) && (angle_to_dir(Get_Angle(start_turf, living_target)) in reverse_nearby_direction(living_target.dir)))
 		var/mob/living/carbon/human/human_target = living_target
 		if(!human_target.check_shields(COMBAT_TOUCH_ATTACK, 30, MELEE))
 			caster.Paralyze(HUGGER_POUNCE_SHIELD_STUN_DURATION)
@@ -102,7 +101,7 @@
 	span_xenowarning("We leap at [target]!"))
 
 	RegisterSignal(caster, COMSIG_XENO_OBJ_THROW_HIT, PROC_REF(obj_hit))
-	RegisterSignal(caster, COMSIG_XENOMORPH_LEAP_BUMP, PROC_REF(mob_hit))
+	RegisterSignal(caster, COMSIG_XENOMORPH_LEAP_BUMP, PROC_REF(mob_hit), TRUE)
 	RegisterSignal(caster, COMSIG_MOVABLE_POST_THROW, PROC_REF(pounce_complete))
 
 	succeed_activate()
@@ -114,8 +113,8 @@
 	start_turf = get_turf(caster)
 	if(ishuman(target) && get_turf(target) == start_turf)
 		mob_hit(caster, target)
+		return
 	caster.throw_at(target, HUGGER_POUNCE_RANGE, HUGGER_POUNCE_SPEED, caster)
-
 	return TRUE
 
 	//AI stuff
@@ -145,3 +144,5 @@
 #undef HUGGER_POUNCE_PARALYZE_DURATION
 #undef HUGGER_POUNCE_STANDBY_DURATION
 #undef HUGGER_POUNCE_WINDUP_DURATION
+#undef HUGGER_POUNCE_SPEED
+#undef HUGGER_POUNCE_SHIELD_STUN_DURATION
