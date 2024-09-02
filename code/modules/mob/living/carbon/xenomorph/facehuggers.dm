@@ -121,7 +121,7 @@
 
 	if(!issamexenohive(xeno_attacker) && stat != DEAD)
 		xeno_attacker.do_attack_animation(src, ATTACK_EFFECT_SMASH)
-		xeno_attacker.visible_message(span_xenowarning("[xeno_attacker] crushes [src]!	"),
+		xeno_attacker.visible_message(span_xenowarning("[xeno_attacker] crushes [src]!"),
 			span_xenowarning("We crush [src]."))
 		kill_hugger()
 		return
@@ -253,7 +253,7 @@
 
 	if(ishuman(loc)) //Having an angry xeno in your hand is a bad idea.
 		var/mob/living/carbon/human/holder = loc
-		holder.visible_message(span_warning("The facehugger [holder] is carrying leaps at [holder.p_them()]!") , "<span class ='danger'>The facehugger you're carrying leaps at you!</span>")
+		holder.visible_message(span_warning("The facehugger [holder] is carrying leaps at [holder.p_them()]!") , span_danger("The facehugger you're carrying leaps at you!"))
 		if(!try_attach(holder))
 			go_idle()
 		return
