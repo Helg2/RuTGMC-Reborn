@@ -28,5 +28,3 @@ GLOBAL_LIST_INIT(dream_topics, list(
 	if(client && !dream_amounts && prob(5))
 		dream()
 
-///amount of dreams left to go
-/mob/living/carbon/var/dream_amounts = 0
