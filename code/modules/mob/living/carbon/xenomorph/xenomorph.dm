@@ -284,7 +284,7 @@
 
 	remove_inherent_verbs()
 	GLOB.alive_xeno_list -= src
-	LAZYREMOVE(GLOB.alive_xeno_list_hive[hivenumber], src)
+	GLOB.alive_xeno_list_hive[hivenumber] -= src
 	GLOB.xeno_mob_list -= src
 	GLOB.dead_xeno_list -= src
 
