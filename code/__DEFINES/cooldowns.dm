@@ -42,7 +42,6 @@
 #define COOLDOWN_BOMBVEST_SHIELD_DROP "cooldown_bombvest_shield_drop"
 #define COOLDOWN_HIVEMIND_MANIFESTATION "cooldown_hivemind_manifestation"
 #define COOLDOWN_ORBITAL_SPOTLIGHT "orbital_spotlight"
-#define COOLDOWN_GAS_BREATH "cooldown_gas_breath"
 #define COOLDOWN_SIGNALLER_SEND "cooldown_signaller_send"
 #define COOLDOWN_BIKE_FUEL_MESSAGE "cooldown_bikee_fuel_message"
 #define COOLDOWN_ITEM_TRICK "cooldown_item_trick"
