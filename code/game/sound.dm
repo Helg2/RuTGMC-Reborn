@@ -62,9 +62,15 @@ A good representation is: 'byond applies a volume reduction to the sound every X
 		frequency = GET_RANDOM_FREQ // Same frequency for everybody
 	// Looping through the player list has the added bonus of working for mobs inside containers
 	var/sound/S = sound(get_sfx(soundin))
-	for(var/mob/M AS in GLOB.player_list|GLOB.aiEyes) //maybe do a player_list_by_z for this specifically
-		if(!M.client && !istype(M, /mob/camera/aiEye)) // make a different check for ai eyes
+	for(var/mob/M AS in GLOB.player_list) //maybe do a player_list_by_z for this specifically
+		if(ambient_sound && !(M.client?.prefs?.toggles_sound & SOUND_AMBIENCE)) //maybe delete this
 			continue
+		var/turf/T = get_turf(M)
+		if(!T || T.z != turf_source.z || get_dist(M, turf_source) > sound_range)
+			continue
+		M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, is_global, channel, S, sound_reciever = M)
+
+	for(var/mob/M AS in GLOB.aiEyes) // I don't care about copypasta, it's all about optimization
 		if(ambient_sound && !(M.client?.prefs?.toggles_sound & SOUND_AMBIENCE)) //maybe delete this
 			continue
 		var/turf/T = get_turf(M)
