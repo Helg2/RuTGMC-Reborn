@@ -87,7 +87,6 @@ Notes:
 
 	return TRUE
 
-
 /datum/tooltip/proc/hide()
 	if (queueHide)
 		addtimer(CALLBACK(src, PROC_REF(do_hide)), 1)
@@ -116,7 +115,6 @@ Notes:
 	if(!theme)
 		theme = "default"
 	user.client.tooltips.show(tip_src, params, title, content, theme)
-
 
 //Arbitrarily close a user's tooltip
 //Includes sanity checks.
