@@ -8,7 +8,6 @@
 #define SPOTLIGHT_COOLDOWN_DURATION 6 MINUTES
 #define SPOTLIGHT_DURATION 2 MINUTES
 
-
 #define MESSAGE_SINGLE "Message this marine"
 #define ASL "Set or un-set as aSL"
 #define SWITCH_SQUAD "Switch this marine's squad"
@@ -963,8 +962,8 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 
 /datum/action/skill/issue_order
 	name = "Issue Order"
-	skill_name = SKILL_LEADERSHIP
 	action_icon = 'icons/mob/order_icons.dmi'
+	skill_name = SKILL_LEADERSHIP
 	skill_min = SKILL_LEAD_TRAINED
 	var/order_type = null
 
@@ -1014,30 +1013,24 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 /datum/action/skill/issue_order/move
 	name = "Issue Move Order"
 	order_type = AURA_HUMAN_MOVE
-	keybinding_signals = list(
-		KEYBINDING_NORMAL = COMSIG_KB_MOVEORDER,
-	)
+	keybinding_signals = list(KEYBINDING_NORMAL = COMSIG_KB_MOVEORDER)
 
 /datum/action/skill/issue_order/hold
 	name = "Issue Hold Order"
 	order_type = AURA_HUMAN_HOLD
-	keybinding_signals = list(
-		KEYBINDING_NORMAL = COMSIG_KB_HOLDORDER,
-	)
+	keybinding_signals = list(KEYBINDING_NORMAL = COMSIG_KB_HOLDORDER)
 
 /datum/action/skill/issue_order/focus
 	name = "Issue Focus Order"
 	order_type = AURA_HUMAN_FOCUS
-	keybinding_signals = list(
-		KEYBINDING_NORMAL = COMSIG_KB_FOCUSORDER,
-	)
+	keybinding_signals = list(KEYBINDING_NORMAL = COMSIG_KB_FOCUSORDER)
 
 /datum/action/skill/toggle_orders
 	name = "Show/Hide Order Options"
 	skill_name = SKILL_LEADERSHIP
 	skill_min = SKILL_LEAD_TRAINED
-	var/orders_visible = TRUE
 	action_icon_state = "hide_order"
+	var/orders_visible = TRUE
 
 /datum/action/skill/toggle_orders/action_activate()
 	var/mob/living/carbon/human/H = owner
@@ -1054,7 +1047,6 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 		for(var/datum/action/skill/issue_order/action in owner.actions)
 			action.hidden = FALSE
 	owner.update_action_buttons()
-
 
 /obj/machinery/computer/camera_advanced/overwatch/proc/get_squad_by_id(id)
 	for(var/datum/squad/squad AS in watchable_squads)
