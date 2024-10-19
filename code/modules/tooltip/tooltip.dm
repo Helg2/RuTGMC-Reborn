@@ -51,14 +51,13 @@ Notes:
 
 	return ..()
 
-
 /datum/tooltip/proc/show(atom/movable/thing, params = null, title = null, content = null, theme = "default", special = "none")
-	if (!thing || !params || (!title && !content) || !owner || !isnum(world.icon_size))
+	if(!thing || !params || (!title && !content) || !owner || !isnum(world.icon_size))
 		return FALSE
-	if (!init)
+	if(!init)
 		//Initialize some vars
 		init = TRUE
-		owner << output(list2params(list(world.icon_size, control)), "[control]:tooltip.init")
+		DIRECT_OUTPUT(owner, output(list2params(list(world.icon_size, control)), "[control]:tooltip.init"))
 
 	showing = TRUE
 
@@ -83,7 +82,7 @@ Notes:
 
 	//If a hide() was hit while we were showing, run hide() again to avoid stuck tooltips
 	showing = FALSE
-	if (queueHide)
+	if(queueHide)
 		hide()
 
 	return TRUE
