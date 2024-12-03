@@ -2,7 +2,6 @@
 	desc = "It's a secure locker for personnel. The first card swiped gains control."
 	name = "personal closet"
 	req_access = list(ACCESS_CIVILIAN_PUBLIC)
-	var/registered_name = null
 
 /obj/structure/closet/secure_closet/personal/PopulateContents()
 	if(prob(50))
@@ -44,56 +43,3 @@
 /obj/structure/closet/secure_closet/personal/cabinet/PopulateContents()
 	new /obj/item/storage/backpack/satchel(src)
 	new /obj/item/radio/headset(src)
-
-/obj/structure/closet/secure_closet/personal/attackby(obj/item/W as obj, mob/user as mob)
-	if(opened)
-		if(istype(W, /obj/item/grab))
-			var/obj/item/grab/G = W
-			if(G.grabbed_thing)
-				MouseDrop_T(G.grabbed_thing, user) //act like they were dragged onto the closet
-			return
-		user.drop_held_item()
-		if(W)
-			W.loc = loc
-	else if(istype(W, /obj/item/card/id))
-		if(broken)
-			to_chat(user, span_warning("It appears to be broken."))
-			return
-		var/obj/item/card/id/I = W
-		if(!I || !I.registered_name)	return
-		if(allowed(user) || !registered_name || (istype(I) && (registered_name == I.registered_name)))
-			//they can open all lockers, or nobody owns this, or they own this locker
-			locked = !locked
-			if(locked)
-				icon_state = icon_locked
-			else
-				icon_state = icon_closed
-
-			if(!registered_name)
-				registered_name = I.registered_name
-				desc = "Owned by [I.registered_name]."
-		else
-			to_chat(user, span_warning("Access Denied"))
-		return
-	to_chat(user, span_warning("Access Denied"))
-
-/obj/structure/closet/secure_closet/personal/verb/reset()
-	set src in oview(1) // One square distance
-	set category = "Object"
-	set name = "Reset Lock"
-	if(!usr.canmove || usr.stat || usr.restrained()) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
-		return
-	if(!ishuman(usr))
-		return
-	if(locked || !registered_name)
-		to_chat(usr, span_warning("You need to unlock it first."))
-	else if (broken)
-		to_chat(usr, span_warning("It appears to be broken."))
-	else
-		if(opened)
-			if(!close())
-				return
-		locked = TRUE
-		icon_state = icon_locked
-		registered_name = null
-		desc = "It's a secure locker for personnel. The first card swiped gains control."
