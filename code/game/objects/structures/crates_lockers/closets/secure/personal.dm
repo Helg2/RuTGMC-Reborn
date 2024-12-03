@@ -33,10 +33,7 @@
 		icon_state = icon_broken
 	else
 		if(!opened)
-			if(locked)
-				icon_state = icon_locked
-			else
-				icon_state = icon_closed
+			icon_state = locked ? icon_locked : icon_closed
 		else
 			icon_state = icon_opened
 
