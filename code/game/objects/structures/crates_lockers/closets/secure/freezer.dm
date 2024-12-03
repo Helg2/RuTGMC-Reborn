@@ -24,21 +24,18 @@
 	name = "Kitchen Cabinet"
 	req_access = list(ACCESS_CIVILIAN_PUBLIC)
 
-/obj/structure/closet/secure_closet/freezer/kitchen/Initialize(mapload)
-	. = ..()
+/obj/structure/closet/secure_closet/freezer/kitchen/PopulateContents()
 	for(var/i in 1 to 6)
 		new /obj/item/reagent_containers/food/snacks/flour(src)
 	new /obj/item/reagent_containers/food/condiment/sugar(src)
 	for(var/i in 1 to 3)
 		new /obj/item/reagent_containers/food/snacks/meat/monkey(src)
 
-/obj/structure/closet/secure_closet/freezer/meat/Initialize(mapload)
-	. = ..()
+/obj/structure/closet/secure_closet/freezer/meat/PopulateContents()
 	for(var/i in 1 to 4)
 		new /obj/item/reagent_containers/food/snacks/meat/monkey(src)
 
-/obj/structure/closet/secure_closet/freezer/fridge/Initialize(mapload)
-	. = ..()
+/obj/structure/closet/secure_closet/freezer/fridge/PopulateContents()
 	for(var/i in 1 to 5)
 		new /obj/item/reagent_containers/food/drinks/milk(src)
 	for(var/i in 1 to 3)
@@ -50,8 +47,7 @@
 	name = "Freezer"
 	req_access = list(ACCESS_CIVILIAN_PUBLIC)
 
-/obj/structure/closet/secure_closet/freezer/money/Initialize(mapload)
-	. = ..()
+/obj/structure/closet/secure_closet/freezer/money/PopulateContents()
 	for(var/i in 1 to 3)
 		new /obj/item/spacecash/c500(src)
 	for(var/i in 1 to 5)

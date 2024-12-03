@@ -8,8 +8,7 @@
 	icon_broken = "secureqmbroken"
 	icon_off = "secureqmoff"
 
-/obj/structure/closet/secure_closet/quartermaster/Initialize(mapload, ...)
-	. = ..()
+/obj/structure/closet/secure_closet/quartermaster/PopulateContents()
 	new /obj/item/clothing/under/rank/cargo(src)
 	new /obj/item/clothing/shoes/brown(src)
 	new /obj/item/clothing/gloves/black(src)

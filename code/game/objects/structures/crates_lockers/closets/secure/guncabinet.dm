@@ -13,7 +13,7 @@
 	update_icon()
 
 /obj/structure/closet/secure_closet/guncabinet/toggle()
-	..()
+	. = ..()
 	update_icon()
 
 /obj/structure/closet/secure_closet/guncabinet/update_overlays()
@@ -29,10 +29,8 @@
 	else
 		. += image(icon,"open")
 
-
 /obj/structure/closet/secure_closet/guncabinet/canterbury
 	req_access = list(ACCESS_MARINE_BRIDGE)
-
 
 /obj/structure/closet/secure_closet/guncabinet/canterbury/PopulateContents()
 	new /obj/item/weapon/gun/shotgun/combat/standardmarine(src)
@@ -53,15 +51,12 @@
 		for(var/i in 1 to to_spawn[typepath])
 			new typepath(src)
 
-
 /obj/structure/closet/secure_closet/guncabinet/nt_lab/PopulateContents()
 	new /obj/item/weapon/gun/smg/m25/elite(src)
-
 
 /obj/structure/closet/secure_closet/guncabinet/pmc_m39/PopulateContents()
 	new /obj/item/storage/pouch/magazine/large/pmc_m25(src)
 	new /obj/item/weapon/gun/smg/m25/elite(src)
-
 
 /obj/structure/closet/secure_closet/guncabinet/mg42/PopulateContents()
 	new /obj/item/weapon/gun/rifle/mg42(src)
@@ -69,13 +64,11 @@
 	new /obj/item/weapon/gun/rifle/mg42(src)
 	new /obj/item/ammo_magazine/mg42(src)
 
-
 /obj/structure/closet/secure_closet/guncabinet/m57a4/PopulateContents()
 	new /obj/item/weapon/gun/launcher/rocket/m57a4(src)
 	new /obj/item/ammo_magazine/rocket/m57a4(src)
 	new /obj/item/weapon/gun/launcher/rocket/m57a4(src)
 	new /obj/item/ammo_magazine/rocket/m57a4(src)
-
 
 /obj/structure/closet/secure_closet/guncabinet/explosives/PopulateContents()
 	new /obj/item/storage/box/visual/grenade/incendiary(src)
@@ -94,7 +87,6 @@
 	new /obj/item/weapon/gun/flamer/big_flamer(src)
 	new /obj/item/explosive/grenade/incendiary(src)
 
-
 /obj/structure/closet/secure_closet/guncabinet/m41aMK1/PopulateContents()
 	new /obj/item/weapon/gun/rifle/ar12(src)
 	new /obj/item/ammo_magazine/rifle/ar12(src)
@@ -102,7 +94,6 @@
 	new /obj/item/weapon/gun/rifle/ar12(src)
 	new /obj/item/ammo_magazine/rifle/ar12(src)
 	new /obj/item/ammo_magazine/rifle/ar12(src)
-
 
 /obj/structure/closet/secure_closet/guncabinet/mp_armory
 	req_access = list(ACCESS_MARINE_BRIG)

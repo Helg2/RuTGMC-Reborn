@@ -1,5 +1,3 @@
-
-//MARINE COMMAND CLOSET
 /obj/structure/closet/secure_closet/captain
 	name = "captain's locker"
 	req_access = list(ACCESS_MARINE_CAPTAIN)
@@ -23,8 +21,6 @@
 	new /obj/item/clothing/head/white_dress(src)
 	new /obj/item/storage/backpack/marine/satchel/captain_cloak(src)
 	new /obj/item/storage/holster/belt/revolver/mateba/officer/full(src)
-
-
 
 /obj/structure/closet/secure_closet/securecom
 	name = "captain's secure box"
@@ -130,7 +126,6 @@
 	icon_broken = "secure_broken_medical"
 	icon_off = "secure_closed_medical"
 
-
 /obj/structure/closet/secure_closet/medical_doctor/PopulateContents()
 	new /obj/item/storage/backpack/marine/satchel(src)
 	if(!is_ground_level(z))
@@ -148,7 +143,6 @@
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		new /obj/item/clothing/suit/storage/snow_suit/doctor(src)
 		new /obj/item/clothing/mask/rebreather/scarf(src)
-
 
 //ALAMAYER CARGO CLOSET
 /obj/structure/closet/secure_closet/req_officer

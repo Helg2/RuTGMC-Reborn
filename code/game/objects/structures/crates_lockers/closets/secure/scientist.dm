@@ -8,15 +8,13 @@
 	icon_broken = "secureresbroken"
 	icon_off = "secureresoff"
 
-/obj/structure/closet/secure_closet/scientist/Initialize(mapload, ...)
-	. = ..()
+/obj/structure/closet/secure_closet/scientist/PopulateContents()
 	new /obj/item/clothing/under/marine/officer/researcher(src)
 	new /obj/item/clothing/under/marine/officer/researcher(src)
 	new /obj/item/clothing/suit/storage/labcoat(src)
 	new /obj/item/clothing/shoes/white(src)
 	new /obj/item/tank/air(src)
 	new /obj/item/clothing/mask/gas(src)
-
 
 /obj/structure/closet/secure_closet/RD
 	name = "Research Director's Locker"
@@ -28,8 +26,7 @@
 	icon_broken = "rdsecurebroken"
 	icon_off = "rdsecureoff"
 
-/obj/structure/closet/secure_closet/RD/Initialize(mapload, ...)
-	. = ..()
+/obj/structure/closet/secure_closet/RD/PopulateContents()
 	new /obj/item/clothing/suit/bio_suit/scientist(src)
 	new /obj/item/clothing/head/bio_hood/scientist(src)
 	new /obj/item/clothing/under/rank/research_director(src)
