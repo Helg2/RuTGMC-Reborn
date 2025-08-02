@@ -430,6 +430,8 @@ GLOBAL_LIST_INIT(sentry_ignore_List, set_sentry_ignore_List())
 		if(human_occupant.wear_id?.iff_signal & iff_signal)
 			continue
 		potential_targets += nearby_tank
+	for(var/obj/item/clothing/mask/facehugger/nearby_facehugger AS in cheap_get_facehuggers_near(src, range))
+		potential_targets += nearby_facehugger
 	return length(potential_targets)
 
 ///Checks the range and the path of the target currently being shot at to see if it is eligable for being shot at again. If not it will stop the firing.

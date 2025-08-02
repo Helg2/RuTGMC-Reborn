@@ -127,6 +127,7 @@ GLOBAL_LIST_EMPTY(fob_sentries_loc)
 GLOBAL_LIST_EMPTY(sensor_towers)
 
 GLOBAL_LIST_EMPTY(unmanned_vehicles)
+GLOBAL_LIST_EMPTY(active_facehuggers_list)
 
 GLOBAL_LIST_INIT(supply_drops, typecacheof(list(
 	/obj/structure/closet/crate,

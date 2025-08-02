@@ -68,6 +68,7 @@
 	. = ..()
 	if(stat == CONSCIOUS)
 		lifetimer = addtimer(CALLBACK(src, PROC_REF(check_lifecycle)), FACEHUGGER_DEATH, TIMER_STOPPABLE)
+		GLOB.active_facehuggers_list += src
 
 	if(input_hivenumber)
 		hivenumber = input_hivenumber
@@ -100,6 +101,7 @@
 	remove_danger_overlay() //Remove the danger overlay
 	if(source)
 		clear_hugger_source()
+	GLOB.active_facehuggers_list -= src
 	return ..()
 
 //todo: make the danger overlay an actual overlay?
@@ -618,6 +620,7 @@
 		return
 	stat = DEAD
 
+	GLOB.active_facehuggers_list -= src
 	deltimer(jumptimer)
 	deltimer(lifetimer)
 	deltimer(activetimer)

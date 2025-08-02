@@ -58,6 +58,8 @@
 /proc/cheap_get_illusions_near(atom/movable/source, distance)
 	. = list()
 	for(var/mob/illusion/nearby_illusion AS in GLOB.mob_illusions_list)
+		if(isnull(nearby_illusion))
+			continue
 		if(source.z != nearby_illusion.z)
 			continue
 		if(get_dist(source, nearby_illusion) > distance)
@@ -96,6 +98,18 @@
 		if(get_dist(source_turf, nearby_unmanned_vehicle) > distance)
 			continue
 		. += nearby_unmanned_vehicle
+
+///Returns a list of facehuggers via get_dist and same z level method, very cheap compared to range()
+/proc/cheap_get_facehuggers_near(atom/movable/source, distance)
+	. = list()
+	for(var/obj/item/clothing/mask/facehugger/nearby_facehugger AS in GLOB.active_facehuggers_list)
+		if(isnull(nearby_facehugger))
+			continue
+		if(source.z != nearby_facehugger.z)
+			continue
+		if(get_dist(source, nearby_facehugger) > distance)
+			continue
+		. += nearby_facehugger
 
 ///Returns the nearest target that has the right target flag
 /proc/get_nearest_target(atom/source, distance, target_flags, attacker_faction, attacker_hive)
