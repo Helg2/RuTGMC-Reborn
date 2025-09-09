@@ -666,13 +666,22 @@
 			if(shuttle.mode != SHUTTLE_IDLE)
 				to_chat(xeno, span_xenowarning("Мы не можем сделать это сейчас."))
 				return
+			var/groundside_humans = length(GLOB.humans_by_zlevel["[z]"])
+			if(groundside_humans > 5)
+				to_chat(usr, span_xenowarning("На земле еще полно добычи!"))
+				return
 			var/confirm = tgui_alert(usr, "Хотите угнать металлическую птицу?", "Угнать птицу?", list("Да", "Нет"))
 			if(confirm != "Да")
+				return
+			groundside_humans = length(GLOB.humans_by_zlevel["[z]"])
+			if(groundside_humans > 5)
+				to_chat(usr, span_xenowarning("На земле еще полно добычи!"))
 				return
 			var/obj/docking_port/stationary/marine_dropship/crash_target/CT = pick(SSshuttle.crash_targets)
 			if(!CT)
 				return
 			do_hijack(shuttle, CT, xeno)
+		
 		if("abduct")
 			var/datum/game_mode/infestation/infestation_mode = SSticker.mode
 			if(infestation_mode.round_stage == INFESTATION_MARINE_CRASHING)
@@ -680,14 +689,14 @@
 				return
 			var/groundside_humans = length(GLOB.humans_by_zlevel["[z]"])
 			if(groundside_humans > 5)
-				to_chat(usr, span_xenowarning("Еще осталась добыча, на которую можно охотиться!"))
+				to_chat(usr, span_xenowarning("На земле еще полно добычи!"))
 				return
 			var/confirm = tgui_alert(usr, "Хотите захватить металлическую птицу?\n ЭТО ЗАВЕРШИТ РАУНД", "Захватить птицу?", list( "Да", "Нет"))
 			if(confirm != "Да")
 				return
 			groundside_humans = length(GLOB.humans_by_zlevel["[z]"])
 			if(groundside_humans > 5)
-				to_chat(usr, span_xenowarning("Еще осталась добыча, на которую можно охотиться!"))
+				to_chat(usr, span_xenowarning("На земле еще полно добычи!"))
 				return
 
 			priority_announce("Нормандия захвачена! Потеряв главный путь к земле, морпехи вынуждены отступить.", title = "Нормандия Захвачена", color_override = "orange")
